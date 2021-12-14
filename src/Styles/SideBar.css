@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.sidebar {
+    margin-bottom: 30px;
+    transition: all 0.5s ease;
+}
+
+.sidebar ul li {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: #B8860C;
+    font-size: 16px;
+    font-weight: bolder;
+    position: relative;
+}
+
+.sidebar ul li .icon{
+    text-decoration-color: #B8860C;
+    color: #B8860C;
+    width: 30px;
+    display: inline-block;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active{
+    color: #0c7db1;
+    background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.sidebar ul li:hover .icon,
+.sidebar ul li.active .icon{
+    color: #0c7db1;
+}
+
+.sidebar ul li:hover:before,
+.sidebar ul li.active:before{
+    display: block;
+}
