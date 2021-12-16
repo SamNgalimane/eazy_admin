@@ -78,7 +78,7 @@ const Sidebar = () => {
                             <NavLink exact="true" to="/ContractData">
                                 <li>
                                     <span className="icon"><AiIcons.AiOutlineForm /></span>
-                                    <span className="item">Contract Reports</span>
+                                    <span className="item">Contract</span>
                                 </li>
                             </NavLink>
                         </ul>
