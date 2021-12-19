@@ -7,7 +7,7 @@ import "../Styles/SideBar.css";
 import { IconContext } from "react-icons/lib";
 
 const Nav = styled.div`
-background: rgb(5, 68, 104);;
+background: rgb(5, 68, 104);
 height: 80px;
 display: flex;
 justify-content: flex-start;
@@ -24,7 +24,7 @@ align-items: center;
 `;
 
 const SidebarNav = styled.nav`
-background: rgb(5, 68, 104);;
+background: rgb(5, 68, 104);
 width: 250px;
 height: 100vh;
 display: flex;
@@ -36,9 +36,7 @@ transition: all 0.5s ease;
 z-index: 10;
 `;
 
-const SidebarWrap = styled.div`
-width: 100%;
-`;
+const SidebarWrap = styled.div`width: 100%;`;
 
 const Sidebar = () => {
     const [sidebar, setSidebar] = useState(false);

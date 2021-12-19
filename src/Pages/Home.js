@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import HomeCard from "../Cards/HomeCards";
 import SupplierCard from "../Cards/SupplierCard";
 import ContractCard from "../Cards/ContractCard";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
