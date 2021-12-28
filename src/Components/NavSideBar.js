@@ -6,6 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import "../Styles/SideBar.css";
 import { IconContext } from "react-icons/lib";
 
+// Create styled components
 const Nav = styled.div`
 background: rgb(5, 68, 104);
 height: 80px;

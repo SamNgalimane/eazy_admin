@@ -5,8 +5,8 @@ import ContractCard from "../Cards/ContractCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
-  const [name, setName] = useState("Google.com");
-  const [about, setAbout] = useState(
+  const [name] = useState("Google.com");
+  const [about] = useState(
     "This card will take to to google home page.click open to open the browser page"
   );
   

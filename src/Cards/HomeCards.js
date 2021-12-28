@@ -1,6 +1,5 @@
 import React from "react";
-import "./card.css";
-
+import "../Styles/card.css";
 
 function HomeCard({ name, about }) {
   return (

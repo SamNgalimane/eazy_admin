@@ -1,105 +1,103 @@
 h1{
-    font-size: 30px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 300;
-    text-align: center;
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
+  font-size: 30px;
+  color: rgb(23, 9, 150);
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
 
-  table{
-    table-layout: fixed;
-  }
+table{
+  table-layout: fixed;
+}
 
-  .tbl-header{
-    background-color: rgba(255,255,255,0.3);
-    Overflow-x:scroll; 
-    Overflow-y:scroll; 
-    margin: 40px;
-   }
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+  height: 400px; 
+  overflow: auto;
+  margin: 40px;
+ }
 
-   .tbl-content{
-    height:300px;
-    overflow-x:auto;
-    margin-top: 0px;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
+ .tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
 
-  th{
-    padding: 20px 15px;
-    text-align: left;
-    font-weight: 500;
-    font-size: 12px;
-    color: #fff;
-    text-transform: uppercase;
-  }
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 550;
+  font-size: 12px;
+  color: rgb(12, 12, 12);
+  text-transform: uppercase;
+}
 
-  td{
-    padding: 15px;
-    text-align: left;
-    vertical-align:middle;
-    justify-content: center;
-    font-weight: 300;
-    font-size: 12px;
-    color: #fff;
-    border-bottom: solid 1px rgba(255,255,255,0.1);
-  }
-  
-  table thead th:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background-color: rgb(248, 214, 24);
-    color: white;
-  }
-  
-  table tbody td:first-child {
-    position: sticky;
-    left: 0;
-    background: white;
-    z-index: 1;
-    background-color: rgb(248, 214, 24);
-    color: white;
-  }
-  
-  table thead th:last-child {
-    position: sticky;
-    right: 0;
-    z-index: 2;
-    background-color: rgb(248, 214, 24);
-    color: white;
-  }
-  
-  table tbody td:last-child {
-    position: sticky;
-    right: 0;
-    background: white;
-    z-index: 1;
-    background-color: rgb(248, 214, 24);
-    color: white;
-  }
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(7, 7, 7);
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
 
-  /* demo styles */
-  
-  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-  body{
-    background: -webkit-linear-gradient(left, #13adc9, #b6a50a);
-    background: linear-gradient(to right, #292a2c, #685e07);
-      }
-  
-  th, td{
-    padding: 12px 15px;
-  }
-  
-  /* for custom scrollbar for webkit browser*/
-  
-  ::-webkit-scrollbar {
-      width: 6px;
-  } 
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  } 
-  ::-webkit-scrollbar-thumb {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  }
+table thead th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: rgb(248, 214, 24);
+  color: rgb(7, 7, 7);
+}
+
+table tbody td:first-child {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 1;
+  background-color: rgb(248, 214, 24);
+  color: rgb(7, 7, 7);
+}
+
+table thead th:last-child {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  background-color: rgb(248, 214, 24);
+  color: rgb(7, 7, 7);
+}
+
+table tbody td:last-child {
+  position: sticky;
+  right: 0;
+  background: white;
+  z-index: 1;
+  background-color: rgb(248, 214, 24);
+  color: rgb(17, 17, 17);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #13adc9, #b6a50a);
+  background: linear-gradient(to right, #f8f8fa, #fafaf8);
+    }
+
+th, td{
+  padding: 12px 15px;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
