@@ -50,7 +50,9 @@ export default class Table extends React.Component {
       var items = this.props.data;
       var keys = this.getKeys();
       return items.map((row, index)=>{
-        return <tr key={index +""+ this.props.data.id} ><RenderRow key={index} data={row} keys={keys}/>
+        return <tr key={index +""+ this.props.data.ID} ><RenderRow value={row['ID']} onClick={(e) =>{
+          this.dataForUpdate(e.target.value)
+        }} key={index} data={row} keys={keys}/>
             <td>
               <button value={row['ID']} onClick={(e) =>{
                 this.dataForUpdate(e.target.value)
