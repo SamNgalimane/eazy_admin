@@ -22,7 +22,7 @@ export default class Table extends React.Component {
       var dataToUpdate = this.props.data;
       let data = {...this.state.dataToPass};
       for (var i = 0; i < dataToUpdate.length; i++) {
-          if (dataToUpdate[i].ID == idToLookFor) {
+          if (dataToUpdate[i].contractCaptureDataID == idToLookFor) {
             data = dataToUpdate[i];
             this.state.dataToPass = data;
             this.isShowPopup(true);
@@ -50,17 +50,11 @@ export default class Table extends React.Component {
       var items = this.props.data;
       var keys = this.getKeys();
       return items.map((row, index)=>{
-        return <tr key={index +""+ this.props.data.ID} ><RenderRow value={row['ID']} onClick={(e) =>{
-          this.dataForUpdate(e.target.value)
-        }} key={index} data={row} keys={keys}/>
-            <td>
-              <button value={row['ID']} onClick={(e) =>{
-                this.dataForUpdate(e.target.value)
-              }}>
-                Edit
-              </button>
-            </td>
-          </tr>
+        return(
+            <tr onClick={(e) => this.dataForUpdate(row['contractCaptureDataID'])} key={index +""+ this.props.data.contractDataID} >
+              <RenderRow key={index} data={row} keys={keys}/>
+            </tr>
+          )
       })
     }
     
@@ -74,7 +68,7 @@ export default class Table extends React.Component {
                 <div className="tbl-header">
                   <table style={{cellpadding:"0", cellspacing:"0", border:"0"}}>
                     <thead>
-                        <tr>{this.getHeader()}<th>Edit</th></tr>
+                        <tr>{this.getHeader()}</tr>
                     </thead>
                     <tbody className="tbl-content">
                       {this.getRowsData()}

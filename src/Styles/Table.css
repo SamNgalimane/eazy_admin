@@ -63,21 +63,12 @@ table tbody td:first-child {
   color: rgb(7, 7, 7);
 }
 
-table thead th:last-child {
+table thead th{
   position: sticky;
-  right: 0;
+  top: 0;
   z-index: 2;
   background-color: rgb(248, 214, 24);
   color: rgb(7, 7, 7);
-}
-
-table tbody td:last-child {
-  position: sticky;
-  right: 0;
-  background: white;
-  z-index: 1;
-  background-color: rgb(248, 214, 24);
-  color: rgb(17, 17, 17);
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
