@@ -10,7 +10,8 @@ export default class Table extends React.Component {
       super(props);
       this.state = {  
         showModalPopup: false,
-        dataToPass: []
+        dataToPass: [],
+        dataFromAPI: props.contractData
       } 
       // set the value to be passed as 'this' param to the tagert function
       this.getHeader = this.getHeader.bind(this); 
@@ -19,16 +20,18 @@ export default class Table extends React.Component {
     }
 
     dataForUpdate = (idToLookFor) => {
-      var dataToUpdate = this.props.data;
+      var dataToUpdate = this.state.dataFromAPI;
       let data = {...this.state.dataToPass};
       for (var i = 0; i < dataToUpdate.length; i++) {
-          if (dataToUpdate[i].contractCaptureDataID == idToLookFor) {
+        if (dataToUpdate[i].contractDataID === "00000000-0000-0000-0000-000000000000") {
             data = dataToUpdate[i];
             this.state.dataToPass = data;
+            console.log(this.state.dataToPass);
             this.isShowPopup(true);
             break;
           }
       }
+
     };
 
     isShowPopup = (status) => {  

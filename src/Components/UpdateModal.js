@@ -46,11 +46,11 @@ class ModalPopup extends Component {
                                 
                                 <div className="col-md-4">
                                     <label htmlFor="Plant-Relevant">Plant Relevant</label>
-                                    <div className="input">
+                                    <div className="input" style={{border: "none"}}>
                                         <input type="radio" value="Yes" id="Yes"
                                         onChange={this.handleChange} name="Plant-Relevant" />Yes
                                         
-                                        <input style={{paddingLeft: "5px"}} type="radio" value="No" id="No"
+                                        <input style={{padding: "15px"}} type="radio" value="No" id="No"
                                         onChange={this.handleChange} name="Plant-Relevant" />No
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@ class ModalPopup extends Component {
 
                                 <div className="col-md-4">
                                     <label htmlFor="Classification">Classification</label>
-                                    <div className="input">
+                                    <div className="input" style={{border: "none"}}>
                                         <input type="radio" value="A" id="A"
                                         onChange={this.handleChange} name="Classification" />A
                                         
