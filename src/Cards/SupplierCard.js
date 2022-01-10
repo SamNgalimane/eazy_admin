@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/card.css";
 
-function SupplierCard({ name, about }) {
+function SupplierCard() {
   return (
     <div className="Card">
       <div className="upper-container">

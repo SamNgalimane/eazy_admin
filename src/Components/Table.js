@@ -17,6 +17,7 @@ export default class Table extends React.Component {
       this.getHeader = this.getHeader.bind(this); 
       this.getRowsData = this.getRowsData.bind(this);
       this.getKeys = this.getKeys.bind(this);
+      this.dataForUpdate = this.dataForUpdate.bind(this);
     }
 
     dataForUpdate = (idToLookFor) => {
@@ -25,8 +26,7 @@ export default class Table extends React.Component {
       for (var i = 0; i < dataToUpdate.length; i++) {
         if (dataToUpdate[i].contractDataID === "00000000-0000-0000-0000-000000000000") {
             data = dataToUpdate[i];
-            this.state.dataToPass = data;
-            console.log(this.state.dataToPass);
+            this.setState({dataToPass: data});
             this.isShowPopup(true);
             break;
           }

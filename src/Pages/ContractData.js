@@ -15,12 +15,12 @@ export default class ContractData extends React.Component {
   componentDidMount() {
     axios.get("https://dskapi.azurewebsites.net/api/GetContractMasterDatas")
     .then( response => {
-        this.setState({contracts:response.data})
+        this.setState({contracts: response.data})
     });
 
     axios.get("https://dskapi.azurewebsites.net/api/GetAllContractCaputredData")
     .then( response => {
-        this.setState({capturedContractData:response.data})
+        this.setState({capturedContractData: response.data})
     });
   }
 
