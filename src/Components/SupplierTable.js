@@ -4,34 +4,31 @@ import ModalPopup from '../Components/UpdateModal';
 import "../Styles/Table.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class Table extends React.Component {
+export default class SupplierTable extends React.Component {
     
     constructor(props){
       super(props);
       this.state = {  
         showModalPopup: false,
-        dataToPass: [],
-        dataFromAPI: props.contractData
+        dataToPass: []
       } 
       // set the value to be passed as 'this' param to the tagert function
       this.getHeader = this.getHeader.bind(this); 
       this.getRowsData = this.getRowsData.bind(this);
       this.getKeys = this.getKeys.bind(this);
-      this.dataForUpdate = this.dataForUpdate.bind(this);
     }
 
     dataForUpdate = (idToLookFor) => {
-      var dataToUpdate = this.state.dataFromAPI;
+      var dataToUpdate = this.props.data;
       let data = {...this.state.dataToPass};
       for (var i = 0; i < dataToUpdate.length; i++) {
-        if (dataToUpdate[i].contractDataID === "00000000-0000-0000-0000-000000000000") {
+          if (dataToUpdate[i].contractCaptureDataID == idToLookFor) {
             data = dataToUpdate[i];
-            this.setState({dataToPass: data});
+            this.state.dataToPass = data;
             this.isShowPopup(true);
             break;
           }
       }
-
     };
 
     isShowPopup = (status) => {  
@@ -54,7 +51,7 @@ export default class Table extends React.Component {
       var keys = this.getKeys();
       return items.map((row, index)=>{
         return(
-            <tr onClick={(e) => this.dataForUpdate(row['contractCaptureDataID'])} key={index +""+ this.props.data.contractDataID} >
+            <tr onClick={(e) => this.dataForUpdate(row[''])} key={index +""+ this.props.data.contractDataID} >
               <RenderRow key={index} data={row} keys={keys}/>
             </tr>
           )
@@ -67,7 +64,7 @@ export default class Table extends React.Component {
             <Fragment>
             <header align="center">  
               <Fragment>  
-                <h1>Contracts.</h1>
+                <h1></h1>
                 <div className="tbl-header">
                   <table style={{cellpadding:"0", cellspacing:"0", border:"0"}}>
                     <thead>
