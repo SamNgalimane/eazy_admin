@@ -1,7 +1,9 @@
 import React, { useState} from "react";
 import SupplierTable from '../Components/SupplierTable';
 import axios from "axios";
-import ProgressBar from "../Components/ProgressBar";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+//import ProgressBar from "../Components/ProgressBar";
 
 const SupplierData = () =>{
 
@@ -9,17 +11,35 @@ const SupplierData = () =>{
   const[month, setMonth] = useState("");
   const[year, setYear] = useState("");
   
-  function load(e) {
-    axios.get(`https://dskapi.azurewebsites.net/api/GetSupplierCapturedData?month=${month}&year=${year}`)
-    .then( response => {
-      setSupplier(response.data);
-      console.log(response.data) 
-    });
-    /*
-    if(supplier.length === 0) {
-      console.log("no data in this period");
+  const load = async () => {
+
+      let data = JSON.stringify({
+        "month": month,
+        "year": year
+      });
+    
+      var config = {
+        method: 'POST',
+        url: 'https://dskapi.azurewebsites.net/api/GetSupplierMasterDatas',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    try{
+      const data = await axios(config);
+      setSupplier(data)
+      console.log(data)
+    } catch (error) {
+      console.log(error);
     }
-    */
+
+    if(supplier.length === 0) {
+      toast.success("no data in this period");
+    }
+    
     console.log("Here before data is loaded");
     <SupplierTable data={supplier} />
   }
@@ -60,11 +80,11 @@ const SupplierData = () =>{
     
         <button onClick={(e) => {
           if(month !== "" && year !== "") {
-            load(e) 
+            load() 
           } else {
-            console.log("notification about not clicking")
+            toast.error("Please select month and year of the data you require.")
           }
-          
+  
         }} className="btn btn-outline-secondary"> Load </button>
       </div>
     </div>
