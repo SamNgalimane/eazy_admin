@@ -82,6 +82,7 @@ const SupplierData = () =>{
           if(month !== "" && year !== "") {
             load() 
           } else {
+            console.log("Please select month and year of the data you require.")
             toast.error("Please select month and year of the data you require.")
           }
   
