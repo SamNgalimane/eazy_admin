@@ -23,7 +23,6 @@ export default class SupplierTable extends React.Component {
 
       this.getCapturedData();  
     }
-
     
     /* Gets value of 'captureData' key in each object of
       the captureData array.
@@ -31,7 +30,7 @@ export default class SupplierTable extends React.Component {
     getCapturedData = () => {
       for(let element of this.props.data){ //Gets all objects of the Contract-Master-Data Array
         this.state.captureData.push(element.captureData[0].supplierCaptureDataID)
-        console.log(element.captureData[0].supplierCaptureDataID)
+        console.log(element.captureData[0])
       }
     }
 
@@ -133,12 +132,6 @@ const ModalPopup = (props) => {
   const[blackDesignatedGroupSupplier, setGroupSupplier] = useState(props.data[0].blackDesignatedGroupSupplier);
   const[supplierCaptureDataID] = useState(props.data[0].supplierCaptureDataID);
    
-  /*
-  useEffect(() => {
-      setDivision(props.data[0].division);
-  }, [division])
-  */
-
   const isShowModal = (status) => {  
       handleClose();  
       setShowModal(status);  

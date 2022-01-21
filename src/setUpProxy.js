@@ -1,15 +1,15 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-export default function(app) {
+module.exports = function(app) {
     app.use(
-        createProxyMiddleware("/GetSupplierMasterDatas", {
+        createProxyMiddleware("/GetSupplierMasterDatas",  {
             target: "https://dskapi.azurewebsites.net/api/",
             changeOrigin: true
         })
     );
 
     app.use(
-        createProxyMiddleware("/GetSupplierCapturedDataById", {
+        createProxyMiddleware("/GetSupplierCapturedData", {
             target: "https://dskapi.azurewebsites.net/api/",
             changeOrigin: true
         })

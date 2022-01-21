@@ -31,7 +31,9 @@ const SupplierData = () =>{
     try{
       const data = await axios(config);
       setSupplier(data);
-      console.log((supplier))
+      if(!supplier) {
+        console.log((supplier))
+      }
     } catch (error) {
       console.log(error);
     }
