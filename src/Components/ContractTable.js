@@ -160,13 +160,7 @@ const ModalPopup = (props) => {
   const[planningContact, setPlanngContact] = useState(props.data[0].planningContact);
   const[comment, setComment] = useState(props.data[0].comment);
   const[contractCaptureDataID] = useState(props.data[0].contractCaptureDataID);
-   
-  /*
-  useEffect(() => {
-      setDivision(props.data[0].division);
-  }, [division])
-  */
-
+  
   const isShowModal = (status) => {  
       handleClose();  
       setShowModal(status);  

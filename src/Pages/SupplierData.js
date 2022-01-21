@@ -37,13 +37,8 @@ const SupplierData = () =>{
     } catch (error) {
       console.log(error);
     }
-
-    if(supplier.length === 0) {
-      console.log("no data in this period")
-      toast.success("no data in this period");
-    } else {
       setLoaded(true);
-    }
+    
   }
   
   if(loaded) {
