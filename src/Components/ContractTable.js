@@ -40,7 +40,7 @@ export default class ContractTable extends React.Component {
 
     // Gets contract captured data with given id
     getContractData = (id) => {
-      axios.get(`https://dskapi.azurewebsites.net/api/GetContractCapturedDataById?ID=${id}`)
+      axios.get(`/GetContractCapturedDataById?ID=${id}`)
       .then( response => {
         this.setState({dataToPass: response.data});
       });
@@ -50,7 +50,7 @@ export default class ContractTable extends React.Component {
      * and display a modal that will be used to update the object data
     */
     dataForUpdate = (idToLookFor) => {
-      console.log("Contact Captured Id for update: ", idToLookFor);
+      console.log("Contract Captured Id for update: ", idToLookFor);
       this.getContractData(idToLookFor);
       if(this.state.dataToPass){
         this.showPopup();

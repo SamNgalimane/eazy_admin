@@ -11,7 +11,8 @@ export default class SupplierTable extends React.Component {
       this.state = {  
         showModalPopup: false,
         dataToPass: [],
-        tableData: props.data
+        tableData: props.data,
+        captureData: []
       } 
       // set the value to be passed as 'this' param to the tagert function
       this.getHeader = this.getHeader.bind(this); 
@@ -20,16 +21,26 @@ export default class SupplierTable extends React.Component {
       this.getSupplierData = this.getSupplierData.bind(this);
     }
 
+    
+    /* Gets value of 'captureData' key in each object of
+      the captureData array.
+    */
+    getCapturedData = () => {
+      for(let element of this.props.data){ //Gets all objects of the Contract-Master-Data Array
+        this.state.captureData.push(element.captureData[0].supplierCaptureDataID)
+      }
+    }
+
     // Gets contract captured data with given id
     getSupplierData = (id) => {
-      axios.get(`https://dskapi.azurewebsites.net/api/GetSupplierCapturedDataById?ID=${id}`)
+      axios.get(`/GetSupplierCapturedDataById?ID=${id}`)
       .then( response => {
         this.setState({dataToPass: response.data});
       });
     };
 
     dataForUpdate = (idToLookFor) => {
-      this.getContractData(idToLookFor);
+      this.getSupplierData(idToLookFor);
       if(this.state.dataToPass){
         this.showPopup();
       }
@@ -44,7 +55,18 @@ export default class SupplierTable extends React.Component {
     };   
 
     getKeys = function(){
-      return Object.keys(this.props.data[0]);
+      let keys = Object.keys(this.props.data[0]); 
+      console.log(keys)
+      // Remove the 'captureData' key in the keys array
+      for( var i = 0; i < keys.length; i++){ 
+        if ( keys[i] === 'captureData' || keys[i] === 'supplierDataID') { 
+            keys.splice(i, 1); 
+        }
+      }
+      return keys;
+
+
+      return keys;
     }
     
     getHeader = function(){
