@@ -31,7 +31,7 @@ const SupplierData = () =>{
     try{
       const data = await axios(config);
       setSupplier(data);
-      if(!supplier) {
+      if(supplier) {
         console.log((supplier))
       }
     } catch (error) {
@@ -39,6 +39,7 @@ const SupplierData = () =>{
     }
 
     if(supplier.length === 0) {
+      console.log("no data in this period")
       toast.success("no data in this period");
     } else {
       setLoaded(true);
