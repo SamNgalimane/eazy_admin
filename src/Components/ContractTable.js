@@ -103,7 +103,7 @@ export default class ContractTable extends React.Component {
       var keys = this.getKeys();
       return this.props.data.map((row, index)=>{
         return(
-            <tr onClick={(e) => { this.dataForUpdate(this.state.captureData[index]);}} 
+            <tr onClick={(e) => { this.dataForUpdate(this.state.captureData[index])}} 
             key={index +""+ this.state.data.contractDataID} >
               <RenderRow key={index} data={row} keys={keys}/>
             </tr>

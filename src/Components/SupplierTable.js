@@ -19,6 +19,9 @@ export default class SupplierTable extends React.Component {
       this.getRowsData = this.getRowsData.bind(this);
       this.getKeys = this.getKeys.bind(this);
       this.getSupplierData = this.getSupplierData.bind(this);
+      this.getCapturedData = this.getCapturedData.bind(this);
+
+      this.getCapturedData();  
     }
 
     
@@ -28,6 +31,7 @@ export default class SupplierTable extends React.Component {
     getCapturedData = () => {
       for(let element of this.props.data){ //Gets all objects of the Contract-Master-Data Array
         this.state.captureData.push(element.captureData[0].supplierCaptureDataID)
+        console.log(element.captureData[0].supplierCaptureDataID)
       }
     }
 
@@ -64,9 +68,6 @@ export default class SupplierTable extends React.Component {
         }
       }
       return keys;
-
-
-      return keys;
     }
     
     getHeader = function(){
@@ -81,7 +82,7 @@ export default class SupplierTable extends React.Component {
       var keys = this.getKeys();
       return items.map((row, index)=>{
         return(
-            <tr onClick={(e) => this.dataForUpdate(row['SupplierDataID'])} key={index +""+ this.props.data.contractDataID} >
+            <tr onClick={(e) => this.dataForUpdate(this.state.captureData[index])} key={index +""+ this.props.data.contractDataID} >
               <RenderRow key={index} data={row} keys={keys}/>
             </tr>
           )

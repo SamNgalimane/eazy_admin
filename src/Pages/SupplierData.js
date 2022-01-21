@@ -3,7 +3,6 @@ import SupplierTable from '../Components/SupplierTable';
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-//import ProgressBar from "../Components/ProgressBar";
 
 const SupplierData = () =>{
 
@@ -31,7 +30,7 @@ const SupplierData = () =>{
     
     try{
       const data = await axios(config);
-      setSupplier(data)
+      setSupplier(data);
       console.log((supplier))
     } catch (error) {
       console.log(error);
