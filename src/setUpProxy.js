@@ -22,9 +22,22 @@ module.exports = function(app) {
         })
     );
     
-    
     app.use(
         createProxyMiddleware("/GetContractCapturedDataById", {
+            target: "https://dskapi.azurewebsites.net/api/",
+            changeOrigin: true
+        })
+    );
+
+    app.use(
+        createProxyMiddleware("/PutSupplierCapturedData", {
+            target: "https://dskapi.azurewebsites.net/api/",
+            changeOrigin: true
+        })
+    );
+
+    app.use(
+        createProxyMiddleware("/PutContractCaputredData", {
             target: "https://dskapi.azurewebsites.net/api/",
             changeOrigin: true
         })

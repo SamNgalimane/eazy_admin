@@ -10,6 +10,7 @@ const SupplierData = () =>{
   const[month, setMonth] = useState("");
   const[year, setYear] = useState("");
   const[loaded, setLoaded] = useState(false);
+  toast.configure();
 
   const load = async () => {
 
@@ -78,8 +79,7 @@ const SupplierData = () =>{
             if(month !== "" && year !== "") {
               load() 
             } else {
-              console.log("Please select month and year of the data you require.")
-              toast.error("Please select month and year of the data you require.")
+              toast("Please select month and year of the data you require.")
             }
     
           }} className="btn btn-outline-secondary"> Load </button>

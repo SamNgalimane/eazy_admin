@@ -4,6 +4,8 @@ import "../Styles/Table.css"
 import "../Styles/Modal.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default class ContractTable extends React.Component {
     
@@ -160,7 +162,8 @@ const ModalPopup = (props) => {
   const[planningContact, setPlanngContact] = useState(props.data[0].planningContact);
   const[comment, setComment] = useState(props.data[0].comment);
   const[contractCaptureDataID] = useState(props.data[0].contractCaptureDataID);
-  
+  toast.configure();
+
   const isShowModal = (status) => {  
       handleClose();  
       setShowModal(status);  
@@ -174,7 +177,7 @@ const ModalPopup = (props) => {
       let values = [division, divisionalHead, 
           e4BusinessPartner, plantRelevant, planningContact, comment]
       console.log("values", values);
-      axios.get(`https://dskapi.azurewebsites.net/api/GetAllContractCaputredData/${contractCaptureDataID}`, {
+      axios.put(`/PutContractCaputredData/${contractCaptureDataID}`, {
           method: 'PUT',
           headers:{
             'Accept': 'application/json',
@@ -183,7 +186,7 @@ const ModalPopup = (props) => {
           body: JSON.stringify(values)
          }).then((result) => {
           result.json().then((resp) => {
-           console.log(resp)
+           toast("saved", resp)
           })
       })
   }

@@ -3,6 +3,8 @@ import "../Styles/Table.css"
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default class SupplierTable extends React.Component {
     
@@ -139,7 +141,8 @@ const ModalPopup = (props) => {
   const[certusYear, setCertusYear] = useState(props.data.certusYear);
   const[blackDesignatedGroupSupplier, setGroupSupplier] = useState(props.data.blackDesignatedGroupSupplier);
   const[supplierCaptureDataID] = useState(props.data.supplierCaptureDataID);
-   
+  toast.configure(); 
+
   const isShowModal = (status) => {  
       handleClose();  
       setShowModal(status);  
@@ -153,7 +156,7 @@ const ModalPopup = (props) => {
       let values = [buyerComment, certusYear, 
         blackDesignatedGroupSupplier]
       console.log("values", values);
-      axios.get(`https://dskapi.azurewebsites.net/api/PutSupplierCapturedData/${supplierCaptureDataID}`, {
+      axios.put(`/PutSupplierCapturedData/${supplierCaptureDataID}`, {
           method: 'PUT',
           headers:{
             'Accept': 'application/json',
@@ -162,7 +165,7 @@ const ModalPopup = (props) => {
           body: JSON.stringify(values)
          }).then((result) => {
           result.json().then((resp) => {
-           console.log(resp)
+           toast("saved",resp)
           })
       })
   }
