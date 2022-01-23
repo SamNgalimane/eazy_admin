@@ -4,8 +4,8 @@ import axios from "axios";
 import ProgressBar from "../Components/ProgressBar";
 
 export default class ContractData extends React.Component {
-  constructor(props){
-      super(props);
+  constructor(){
+      super();
       this.state={
           contracts: []
       };

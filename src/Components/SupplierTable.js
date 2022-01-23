@@ -18,7 +18,7 @@ export default class SupplierTable extends React.Component {
       this.getHeader = this.getHeader.bind(this); 
       this.getRowsData = this.getRowsData.bind(this);
       this.getKeys = this.getKeys.bind(this);
-      this.getSupplierData = this.getSupplierData.bind(this);
+      //this.getSupplierData = this.getSupplierData.bind(this);
       this.getCapturedData = this.getCapturedData.bind(this);
 
       this.getCapturedData();  
@@ -28,25 +28,33 @@ export default class SupplierTable extends React.Component {
       the captureData array.
     */
     getCapturedData = () => {
-      for(let element of this.props.data){ //Gets all objects of the Contract-Master-Data Array
-        this.state.captureData.push(element.captureData[0].supplierCaptureDataID)
-        console.log(element.captureData[0])
+      for(let element of this.props.data){ //Gets all supplier-Capture-Data-ID values of the Supplier-Master-Data Array
+        this.state.captureData.push(element.captureData[0]);
       }
     }
 
-    // Gets contract captured data with given id
+    /** Gets supplier captured data with given id
     getSupplierData = (id) => {
-      axios.get(`/GetSupplierCapturedDataById?ID=${id}`)
-      .then( response => {
-        this.setState({dataToPass: response.data});
-      });
+      try {
+        axios.get(`/GetSupplierCapturedDataById?ID=${id}`)
+        .then( response => {
+          this.setState({dataToPass: response.data});
+        });
+      } catch(error){
+        console.log(error);
+      }
     };
+    */
 
     dataForUpdate = (idToLookFor) => {
-      this.getSupplierData(idToLookFor);
-      if(this.state.dataToPass){
-        this.showPopup();
+      for(var i = 0; i < this.state.captureData.length; i++) {
+        if(this.state.captureData[i].supplierCaptureDataID === idToLookFor) {
+          this.setState({dataToPass: this.state.captureData[i]});
+          break;
+        }
       }
+      //this.getSupplierData(idToLookFor);
+      this.showPopup();
     };
 
     showPopup = () => {
@@ -59,8 +67,8 @@ export default class SupplierTable extends React.Component {
 
     getKeys = function(){
       let keys = Object.keys(this.props.data[0]); 
-      console.log(keys)
-      // Remove the 'captureData' key in the keys array
+      //console.log(keys)
+      // Remove the 'captureData' and 'supplierDataID' keys from the keys array
       for( var i = 0; i < keys.length; i++){ 
         if ( keys[i] === 'captureData' || keys[i] === 'supplierDataID') { 
             keys.splice(i, 1); 
@@ -81,7 +89,7 @@ export default class SupplierTable extends React.Component {
       var keys = this.getKeys();
       return items.map((row, index)=>{
         return(
-            <tr onClick={(e) => this.dataForUpdate(this.state.captureData[index])} key={index +""+ this.props.data.contractDataID} >
+            <tr onClick={(e) => this.dataForUpdate(this.state.captureData[index].supplierCaptureDataID)} key={index +""+ this.props.data.contractDataID} >
               <RenderRow key={index} data={row} keys={keys}/>
             </tr>
           )
@@ -127,10 +135,10 @@ const RenderRow = (props) =>{
 const ModalPopup = (props) => {
   const[showModal, setShowModal] = useState(false);
   const[isButtonActive, setButtonState] = useState(false);
-  const[buyerComment, setBuyerComment] = useState(props.data[0].buyerComment);
-  const[certusYear, setCertusYear] = useState(props.data[0].certusYear);
-  const[blackDesignatedGroupSupplier, setGroupSupplier] = useState(props.data[0].blackDesignatedGroupSupplier);
-  const[supplierCaptureDataID] = useState(props.data[0].supplierCaptureDataID);
+  const[buyerComment, setBuyerComment] = useState(props.data.buyerComment);
+  const[certusYear, setCertusYear] = useState(props.data.certusYear);
+  const[blackDesignatedGroupSupplier, setGroupSupplier] = useState(props.data.blackDesignatedGroupSupplier);
+  const[supplierCaptureDataID] = useState(props.data.supplierCaptureDataID);
    
   const isShowModal = (status) => {  
       handleClose();  
@@ -173,36 +181,35 @@ const ModalPopup = (props) => {
               </Modal.Header>  
               <Modal.Body>
                   <div className="edit">
-                      <div className="row">
-                          <div className="col-md-4">
-                              <label htmlFor="certus-Year">certus Year</label>
-                              <input id="certus-Year" className="input" type="text" 
-                              onChange={(e) => {
-                                  setCertusYear(e.target.value)
-                                  setButtonState(true)
-                              }} value={certusYear}/>
-                          </div>
-                          <div className="col-md-4">
-                              <label htmlFor="black-Designated-Group-Supplier">Black Designated Group Supplier</label>
-                              <input className="input" id="black-Designated-Group-Supplier" type="text" 
-                              onChange={(e) => {
-                                  setGroupSupplier(e.target.value)
-                                  setButtonState(true)  
-                              }} value={blackDesignatedGroupSupplier}/>
-                          </div>
-                          
-                          <div className="col-md-4">
-                              <label htmlFor="buyer-Comment">Buyer Comment</label>
-                              <textarea className="input" id="buyerComment" type="text" 
-                              onChange={(e) => {
-                                  setBuyerComment(e.target.value)
-                                  setButtonState(true)
-                              }} value={buyerComment}>
-                                  {buyerComment}
-                              </textarea>
-                          </div>
+                      <div className="col-md-4">
+                          <label htmlFor="certus-Year">certus Year</label>
+                          <input id="certus-Year" className="input" type="text" 
+                          onChange={(e) => {
+                              setCertusYear(e.target.value)
+                              setButtonState(true)
+                          }} value={certusYear}/>
                       </div>
-                      <div style={{marginLeft: "500px"}}>
+                      <div className="col-md-4">
+                          <label htmlFor="black-Designated-Group-Supplier">Black Designated Group Supplier</label>
+                          <input className="input" id="black-Designated-Group-Supplier" type="text" 
+                          onChange={(e) => {
+                              setGroupSupplier(e.target.value)
+                              setButtonState(true)  
+                          }} value={blackDesignatedGroupSupplier}/>
+                      </div>
+                          
+                      <div className="col-md-4">
+                          <label htmlFor="buyer-Comment">Buyer Comment</label>
+                          <textarea className="input" id="buyerComment" type="text" 
+                          onChange={(e) => {
+                              setBuyerComment(e.target.value)
+                              setButtonState(true)
+                          }} value={buyerComment}>
+                              {buyerComment}
+                          </textarea>
+                      </div>
+                    
+                      <div style={{marginLeft: "40px"}}>
                           <button type="button" style={{padding: "5px", margin: 20, borderRadius: 5}} className="link-button" onClick={() => isShowModal(showModal)}> Close</button>
                           <button type="button" style={{padding: 5, margin: 20, borderRadius: 5}} className="link-button" disabled={!isButtonActive} onClick={handleSave} > Save</button>
                       </div>

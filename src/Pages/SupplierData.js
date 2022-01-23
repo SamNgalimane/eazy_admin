@@ -31,14 +31,10 @@ const SupplierData = () =>{
     try{
       const data = await axios(config);
       setSupplier(data);
-      if(supplier) {
-        console.log((supplier))
-      }
     } catch (error) {
       console.log(error);
     }
-      setLoaded(true);
-    
+    setLoaded(true);
   }
   
   if(loaded) {
